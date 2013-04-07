@@ -5,7 +5,7 @@ For more details, please check http://www.interviewstreet.com/recruit/challenges
 */  
 #include <iostream>  
 using namespace std;  
-  
+
 int start[9];  
 int last[9];  
 int pegs[6];  
@@ -15,11 +15,11 @@ int optimSteps[9][2];
 int N = -1;  
 int K = -1;  
 int MAX = 100;  
-  
+
 int oldi;  
 int oldj;  
 int old;  
-  
+
 void print()  
 {  
     cout << minSteps << endl;  
@@ -28,28 +28,36 @@ void print()
         cout << optimSteps[i][0] << " " << optimSteps[i][1] << endl;  
     }  
 }  
-  
+
 void initPeg()  
 {  
+    printf("beginning init peg\n");
     for(int i = 1; i <= K; ++i)  
     {  
         pegs[i] = MAX;  
+        // printf("pegs[%d] = %d\n", i, pegs[i]);
         for(int j = 1; j <= N; ++j)  
+            // j for radius
         {  
+            printf("%d %d\n",i, j );
+            printf("%d == %d\n",start[j],i );
             if(start[j] == i )  
             {  
+                printf("shit\n");
                 pegs[i] = j;  
                 break;  
             }  
-        }  
+        }
     }  
+    
+    // printf("end\n");
 }  
-  
+
 void fun(int depth)//steps: 0-7  
 {  
     if(depth++ >= minSteps)  
         return;  
-      
+
     for(int i = 1; i <= K; ++i)  
     {  
         for(int j = 1; j <= K; ++j)  
@@ -61,7 +69,7 @@ void fun(int depth)//steps: 0-7
                 initPeg();  
                 steps[depth][0] = i;  
                 steps[depth][1] = j;  
-  
+
                 //after the switch  
                 bool flag = true;  
                 for(int idx = 1; idx <= N; ++idx)  
@@ -90,7 +98,7 @@ void fun(int depth)//steps: 0-7
         }  
     }  
 }  
-  
+
 int main()  
 {  
     cin >> N;  
@@ -100,8 +108,12 @@ int main()
     for(int i = 1; i <= N; ++i)  
         cin >> last[i];  
     initPeg();  
-      
-    fun(0);  
-    print();  
+    printf("zzz\n");
+for (int i = 1; i <= K; i++) {
+                printf("pegs[%d] = %d\n", i, pegs[i]);
+
+    }
+    // fun(0);  
+    // print();  
     return 0;  
 }  

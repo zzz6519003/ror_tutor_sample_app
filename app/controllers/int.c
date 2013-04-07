@@ -16,5 +16,7 @@ int main() {
 }
 
 void init() {
-	for (int i = 0; i < )
+	for (int i = 1; i < pegs; i++) {
+		pegs[i] = 
+	}
 }
